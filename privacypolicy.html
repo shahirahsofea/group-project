@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chic Ole Fried Chicken</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #620f0f;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fa9912;
+            padding: 10px 20px;
+        }
+        nav img {
+            height: 50px;
+        }
+        nav div {
+            display: flex;
+            align-items: center;
+        }
+        nav a, nav button {
+            color: #fff;
+            padding: 15px 20px;
+            text-decoration: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        nav a:hover, nav button:hover {
+            background-color: #b37700;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #4c2c00;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #b37700;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .banner {
+            position: relative;
+            height: 100vh; /* Full screen height */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .banner video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+        }
+        .banner video.hidden {
+            display: none;
+        }
+        .banner .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .banner .overlay h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+        .banner .overlay p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .banner .overlay a {
+            background-color: #fa9912;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+        .headline {
+            text-align: center;
+            font-weight: bold;
+            color: rgb(231, 174, 6);
+            margin: 20px 0;
+            font-size: 24px;
+        }
+        .products {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #fca119;
+        }
+        .product {
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 30%;
+            text-align: center;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        .product p {
+            margin: 10px 0;
+        }
+        .footer {
+            background-color: #4c2c00;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .social-media {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .social-media a {
+            margin: 0 5px;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .social-media a.facebook {
+            background-image: url('image/facebook.png');
+        }
+        .social-media a.instagram {
+            background-image: url('image/instagram.png');
+        }
+        .cart-button {
+            display: flex;
+            align-items: center;
+        }
+        .cart-button img {
+            height: 24px;
+            margin-left: 10px;
+        }
+        .brand-text {
+            font-family: 'Roboto', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #fff;
+            margin-left: 10px;
+        }
+        #about {
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            padding: 20px;
+            margin-bottom: 50px;
+            justify-content: center;
+            align-items: center;
+        }
+        #intro {
+            display: flex;
+            flex-direction: column;
+            text-align: justify;
+            padding: 20px;
+            margin: 20px;
+            background-color: #ffb700;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto; /* Center horizontally */
+        }
+        #intro h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        #privacy-title {
+            text-align: center;
+            color: #E7AE06; /* Mustard color */
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div style="display: flex; align-items: center;">
+            <img src="image/logo.jpg" alt="Brand Logo">
+            <span class="brand-text">CHIC OLE</span>
+        </div>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="offers.html">Offers</a>
+            <div class="dropdown">
+                <a href="#">More</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#">Privacy & Policy</a>
+                </div>
+            </div>
+            <button class="cart-button">
+                <img src="image/addtocart.png" alt="Cart">
+                <a href="addtocart.html" style="color: #fff;">Add to Cart</a>
+            </button>
+        </div>
+    </nav>
+
+    <section id="privacy-and-policy">
+        <h1 id="privacy-title">PRIVACY & POLICY</h1>
+        <div id="intro">
+            <p>Chic Ole Malaysia establishes the privacy policy below to protect the personal information of the subject of
+                information (client) and to promptly and smoothly handle grievances related to the information in accordance with Article 30 of the Personal Information Protection Act</p>
+            <p>1. Purpose of Handling of Personal Information Chic Ole Malaysia . handles personal information for the following purposes and does not use it for purposes other than those listed below:
+            – Service introduction for subscription and inquiries on the brands of bhc Chic Ole Malaysia.</p>
+
+            <p>2. Period of Handling and Retention of Personal Information</p>
+            <p>A. Chic Ole Malaysia handles/retains personal information within the period of handling and retention of personal information consented to upon collection of personal information from subject of information or the period of handling and retention of personal information as determined by law.B. Detailed period of handling and retention of personal information is as follows:
+            – Customer subscription and management: From service inquiry to conclusion of franchise contract, however, upon retention of debt and liability relationship, then until settlement of said relationship;</p>
+
+            <p>– Contract/subscription withdrawal, payment, and records of supply of wealth on electronic commerce: 5 years </p>
+
+            <p>3. Provision of Personal Information to Third Parties Chic Ole Malaysia shall not provide personal information to third parties unless applicable to Article 17 of the Personal Information Protection Act, including separate consent of subject of information and special law stipulations.</p>
+
+            <p>4. Rights, Obligations, and Execution Methods by Subject of Information and Legal Representative Subject of information may execute the following rights related to the protection of personal information at any time regarding Chic Ole Malaysia:</p>
+
+            <p>A. Request for perusal of personal information;</p>
+            <p>B. Request to correct errors in personal information, if any;</p>
+            <p>C. Request for deletion of personal information;</p>
+            <p>D. Request for discontinuation of personal information handling</p>
+
+            <p>5. Items of Personal Information Handled by Chic Ole Malaysia. Chic Ole Malaysia handles the following personal information items:</p>
+            <p>A. Customer subscription and management</p>
+            <p>- Required: Name, email, mobile phone number, address</p>
+            <p>- Optional: Date of birth, gender</p>
+
+            <p>6. Destruction of Personal Information by Chic Ole Malaysia.</p>
+            <p>A. Chic Ole Malaysia shall destroy personal information when it becomes unnecessary, such as expiration of the personal information retention period or achievement of the processing purpose.</p>
+            <p>B. Chic Ole Malaysia shall destroy personal information in the following methods:</p>
+            <p>- Electronic file types: Permanently deleted using technical methods that prevent recovery and reproduction of the records.</p>
+            <p>- Printed materials: Shredded or incinerated to destroy.</p>
+
+            <p>7. Measures to Ensure Safety of Personal Information Chic Ole Malaysia takes the following measures to ensure the safety of personal information:</p>
+            <p>A. Administrative measures: Establishment and implementation of internal management plans, regular employee training, etc.</p>
+            <p>B. Technical measures: Management of access rights to personal information processing systems, installation of access control systems, encryption of unique identification information, etc.</p>
+            <p>C. Physical measures: Restriction of access to personal information storage sites such as computer rooms and data storage rooms.</p>
+
+            <p>8. Installation, Operation, and Rejection of Automatic Collection of Personal Information Chic Ole Malaysia uses cookies to store and retrieve usage information from time to time in order to provide personalized services. Users have the right to refuse the installation of cookies. However, if the installation of cookies is refused, the use of the website may become inconvenient or some services may be difficult to provide.</p>
+
+            <p>9. Personal Information Protection Manager</p>
+            <p>A. Chic Ole Malaysia has designated the personal information protection manager as follows for the protection of personal information and handling of grievances related to personal information:</p>
+            <p>▶️ Personal Information Protection Manager</p>
+            <p>- Name: Shazlin</p>
+            <p>- Title: Manager</p>
+            <p>- Contact: shazzz@gmail.com, +60 19-456-7890, Kota Bharu</p>
+            <p>(The department responsible for personal information protection is connected to the Personal Information Protection Manager.)</p>
+
+            <p>10. Modification of the Privacy Policy This privacy policy shall be effective from the date of implementation, and in the event of addition, deletion, or correction of changes in accordance with laws and policies, notice will be given seven days prior to the implementation of the changes.</p>
+
+            <p>11. Remedies for Infringement of Rights</p>
+            <p>Subjects of information may seek remedies for violations of personal information through dispute resolution applications, consultations, etc. to the Personal Information Dispute Mediation Committee, the Korea Internet & Security Agency's Personal Information Infringement Report Center, etc. 
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Chic Ole Malaysia. All rights reserved.</p>
+        <div class="social-media">
+            <a href="https://www.facebook.com/ChicOleMY?mibextid=kFxxJD" class="facebook"></a>
+            <a href="https://www.instagram.com/chicolemy?igsh=emxyMnZoMWlsZzBq" class="instagram"></a>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+    
+
+
+            

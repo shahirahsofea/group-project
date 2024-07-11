@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffae00;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .contact-form {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .contact-form h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .contact-form p {
+            font-size: 14px;
+            color: #555;
+        }
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-form form input, 
+        .contact-form form textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .contact-form form button {
+            padding: 10px 20px;
+            background-color: #7e0806;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .contact-info {
+            flex: 1;
+            padding: 20px;
+            background-color: #f1c7a8;
+            border-radius: 4px;
+        }
+        .contact-info h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .contact-info p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .social-media {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .social-media a {
+            font-size: 24px;
+            color: #555;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contact-form">
+            <h1>Contact</h1>
+            <p>*Denotes Mandatory Fields</p>
+            <form>
+                <label for="name">Name*</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email*</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5"></textarea>
+                
+                <button type="submit">SUBMIT</button>
+            </form>
+        </div>
+        <div class="contact-info">
+            <h2>Our Address</h2>
+            <p>Urban Ground, Suite 109B, Ground Floor</p>
+            <p>Office Tower, Kelana Park View, Jalan SS 6/2</p>
+            <p>47301 Petaling Jaya, Selangor</p>
+            
+            <h2>Our Social</h2>
+            <div class="social-media">
+                <a href="https://www.facebook.com/ChicOleMY?mibextid=kFxxJD" class="fab fa-facebook"></a>
+                <a href="https://www.instagram.com/chicolemy?igsh=emxyMnZoMWlsZzBq" class="fab fa-instagram"></a>
+            </div>
+            
+            <h2>Email Us</h2>
+            <p>For Product Questions/Concerns, Brand Information & General Inquiries:</p>
+            <p><a href="mailto:urbanground.my@gmail.com">urbanground.my@gmail.com</a></p>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #680606;
+        }
+        .cart-container {
+            width: 80%;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .cart-table th, .cart-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-table th {
+            background-color: #f4f4f4;
+        }
+        .cart-table img {
+            width: 50px;
+            height: auto;
+        }
+        .cart-table .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+        .cart-table .quantity-control input {
+            width: 40px;
+            text-align: center;
+            margin: 0 5px;
+        }
+        .cart-table .remove-button {
+            background: none;
+            border: none;
+            color: #d9534f;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .special-instructions {
+            margin: 20px 0;
+        }
+        .special-instructions textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        .cart-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .checkout-button {
+            background-color: #f37b20;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+        .checkout-button:hover {
+            background-color: #d56915;
+        }
+    </style>
+</head>
+<body>
+    <div class="cart-container">
+        <div class="cart-header">Cart</div>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <tr>
+                    <td>
+                        <button class="remove-button">&times;</button>
+                        <img src="image/menu1.jpg" alt="Product Image">
+                        <div>
+                            <div>2PC SPICY K-CHIC with RICE MEAL</div>
+                            
+                        </div>
+                    </td>
+                    <td class="price">RM15.80</td>
+                    <td class="quantity-control">
+                        <button class="decrease-quantity">-</button>
+                        <input type="text" value="3">
+                        <button class="increase-quantity">+</button>
+                    </td>
+                    <td class="total">RM47.40</td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="remove-button">&times;</button>
+                        <img src="image/menu2.jpg" alt="Product Image">
+                        <div>
+                            <div>2PC ORIGINAL CHIC with RICE MEAL</div>
+                        </div>
+                    </td>
+                    <td class="price">RM10.90</td>
+                    <td class="quantity-control">
+                        <button class="decrease-quantity">-</button>
+                        <input type="text" value="1">
+                        <button class="increase-quantity">+</button>
+                    </td>
+                    <td class="total">RM10.90</td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="remove-button">&times;</button>
+                        <img src="image/menu3.jpg" alt="Product Image">
+                        <div>
+                            <div>CHEESY WEDGES</div>
+                            
+                        </div>
+                    </td>
+                    <td class="price">RM6.00</td>
+                    <td class="quantity-control">
+                        <button class="decrease-quantity">-</button>
+                        <input type="text" value="1">
+                        <button class="increase-quantity">+</button>
+                    </td>
+                    <td class="total">RM6.00</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="special-instructions">
+            <div>Special instructions</div>
+            <textarea rows="3">I want chicken thighs only!</textarea>
+        </div>
+        <div class="cart-summary">
+            <div id="cart-total">RM64.30</div>
+            <button class="checkout-button">Checkout</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+
+            function updateTotal() {
+                let total = 0;
+                cartItems.querySelectorAll('tr').forEach(row => {
+                    const price = parseFloat(row.querySelector('.price').textContent.replace('RM', ''));
+                    const quantity = parseInt(row.querySelector('.quantity-control input').value);
+                    const rowTotal = price * quantity;
+                    row.querySelector('.total').textContent = 'RM' + rowTotal.toFixed(2);
+                    total += rowTotal;
+                });
+                cartTotal.textContent = 'RM' + total.toFixed(2);
+            }
+
+            cartItems.addEventListener('click', function (e) {
+                if ( e.target.classList.contains('remove-button')) {
+                    e.target.closest('tr').remove();
+                    updateTotal();
+                } else if (e.target.classList.contains('increase-quantity')) {
+                    const input = e.target.closest('.quantity-control').querySelector('input');
+                    input.value = parseInt(input.value) + 1;
+                    updateTotal();
+                } else if (e.target.classList.contains('decrease-quantity')) {
+                    const input = e.target.closest('.quantity-control').querySelector('input');
+                    if (parseInt(input.value) > 1) {
+                        input.value = parseInt(input.value) - 1;
+                        updateTotal();
+                    }
+                }
+            });
+
+            cartItems.addEventListener('input', function (e) {
+                if (e.target.closest('.quantity-control input')) {
+                    updateTotal();
+                }
+            });
+
+            updateTotal();
+        });
+    </script>
+</body>
+</html>
+

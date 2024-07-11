@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chic Ole Fried Chicken</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #620f0f;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fa9912;
+            padding: 10px 20px;
+        }
+        nav img {
+            height: 50px;
+        }
+        nav div {
+            display: flex;
+            align-items: center;
+        }
+        nav a, nav button {
+            color: #fff;
+            padding: 15px 20px;
+            text-decoration: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        nav a:hover, nav button:hover {
+            background-color: #b37700;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #4c2c00;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #b37700;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .banner {
+            position: relative;
+            height: 100vh; /* Full screen height */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .banner video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+        }
+        .banner video.hidden {
+            display: none;
+        }
+        .banner .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .banner .overlay h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+        .banner .overlay p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .banner .overlay a {
+            background-color: #fa9912;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+        .headline {
+            text-align: center;
+            font-weight: bold;
+            color: rgb(231, 174, 6);
+            margin: 20px 0;
+            font-size: 24px;
+        }
+        .products {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #fca119;
+        }
+        .product {
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 30%;
+            text-align: center;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        .product p {
+            margin: 10px 0;
+        }
+        .footer {
+            background-color: #4c2c00;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .social-media {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .social-media a {
+            margin: 0 5px;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .social-media a.facebook {
+            background-image: url('image/facebook.png');
+        }
+        .social-media a.instagram {
+            background-image: url('image/instagram.png');
+        }
+        .cart-button {
+            display: flex;
+            align-items: center;
+        }
+        .cart-button img {
+            height: 24px;
+            margin-left: 10px;
+        }
+        .brand-text {
+            font-family: 'Roboto', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #fff;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div style="display: flex; align-items: center;">
+            <img src="image/logo.jpg" alt="Brand Logo">
+            <span class="brand-text">CHIC OLE</span>
+        </div>
+        <div>
+            <a href="#">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="offers.html">Offers</a>
+            <div class="dropdown">
+                <a href="#">More</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="privacypolicy.html">Privacy & Policy</a>
+                </div>
+            </div>
+            <button class="cart-button">
+                <img src="image/addtocart.png" alt="Cart">
+                <a href="addtocart.html" style="color: #fff;">Add to Cart</a>
+            </button>
+        </div>
+    </nav>
+    <div class="banner">
+        <video class="slide" autoplay muted loop>
+            <source src="video/video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video class="slide hidden" autoplay muted loop>
+            <source src="video/video2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay">
+            <div>
+                <h1>EAT BETTER CHICKENS</h1>
+                <p>Enjoy the best chickens in town</p>
+                <a href="menu.html">VIEW OUR MENU</a>
+            </div>
+        </div>
+    </div>
+    <div class="headline">Featuring our latest line up just for you! Treat yourself today!</div>
+    <div class="products">
+        <div class="product">
+            <img src="image/menu1.jpg" alt="2pc spicy k-chic">
+            <p>2PC SPICY K-CHIC with RICE MEAL</p>
+            <p>RM15.80</p>
+        </div>
+        <div class="product">
+            <img src="image/menu2.jpg" alt="2pc original chic">
+            <p>2PC ORIGINAL CHIC with RICE MEAL</p>
+            <p>RM10.90</p>
+        </div>
+        <div class="product">
+            <img src="image/menu3.jpg" alt="Cheesy Wedges">
+            <p>CHEESY WEDGES</p>
+            <p>RM6.00</p>
+        </div>
+    </div>
+    <div class="footer">
+        <div>© Copyright 2016-2024. All Rights Reserved by CHIC OLE MALAYSIA SDN BHD</div>
+        <div>
+            <a href="about.html">About</a>
+            <a href="privacypolicy.html">Privacy & Policy</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="social-media">
+            <a href="https://www.facebook.com/ChicOleMY?mibextid=kFxxJD" class="facebook"></a>
+            <a href="https://www.instagram.com/chicolemy?igsh=emxyMnZoMWlsZzBq" class="instagram"></a>
+        </div>
+    </div>
+    <script>
+        const videos = document.querySelectorAll('.banner video');
+        let currentVideo = 0;
+
+        setInterval(() => {
+            videos[currentVideo].classList.add('hidden');
+            currentVideo = (currentVideo + 1) % videos.length;
+            videos[currentVideo].classList.remove('hidden');
+        }, 10000); // Change video every 10 seconds
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

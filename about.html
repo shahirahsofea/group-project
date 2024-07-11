@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="about">
+        <div class="inner-section">
+            <h1>About Us</h1>
+            <p class="text">
+                Welcome to Chic Ole Company, your go-to spot for the best fried chicken! We pride ourselves on serving delicious, crispy fried chicken made from the freshest ingredients. Our special blend of spices and commitment to quality ensures every bite is a delightful experience.
+                At Chic Ole, we believe in great food and excellent service. Whether you’re dining in, taking out, or catering, we’re here to make your meal special. Thank you for choosing Chic Ole Company, where every bite is a celebration!
+            </p>
+            <div class="skills">
+                <button onclick="location.href='contact.html'">Contact Us</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f1f1;
+}
+.about {
+    background: url(imagesofea/about1.jpeg) no-repeat left;
+    background-size: 55%;
+    background-color: rgb(178, 25, 25);
+    overflow: hidden;
+    padding: 100px 0;
+}
+.inner-section {
+    width: 55%;
+    float: right;
+    background-color: rgb(225, 175, 49);
+    padding: 100px;
+    box-shadow: 10px 10px 8px rgba(0,0,0,0.3);
+}
+.inner-section h1 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 900;
+}
+.text {
+    font-size: 17px;
+    color: black;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+.skills button {
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: 20px;
+    padding: 8px;
+    width: 200px;
+    background-color: rgb(178, 25, 25);
+    color: white;
+    cursor: pointer;
+}
+.skills button:hover {
+    transition: 1s;
+    background-color: #ecf5f5;
+    color: rgb(139, 39, 39);
+}
+@media screen and (max-width:1200px) {
+    .inner-section {
+        padding: 80px;
+    }
+}
+@media screen and (max-width:1000px) {
+    .about {
+        background-size: 100%;
+        padding: 100px 40px;
+    }
+    .inner-section {
+        width: 100%;
+    }
+}
+@media screen and (max-width:600px) {
+    .about {
+        padding: 0;
+    }
+    .inner-section {
+        padding: 60px;
+    }
+    .skills button {
+        font-size: 19px;
+        padding: 5px;
+        width: 160px;
+    }
+}
+</style>
+
+<script>
+(function($) {
+    $(document).ready(function() {
+        var s = $('.slider'),
+            sWrapper = s.find('.slider-wrapper'),
+            sItem = s.find('.slide'),
+            btn = s.find('.slider-link'),
+            sWidth = sItem.width(),
+            sCount = sItem.length,
+            slide_date = s.find('.slide-date'),
+            slide_title = s.find('.slide-title'),
+            slide_text = s.find('.slide-text'),
+            slide_more = s.find('.slide-more'),
+            slide_image = s.find('.slide-image img'),
+            sTotalWidth = sCount * sWidth;
+
+        sWrapper.css('width', sTotalWidth);
+        sWrapper.css('width', sTotalWidth);
+
+        var clickCount = 0;
+
+        btn.on('click', function(e) {
+            e.preventDefault();
+
+            if ($(this).hasClass('next')) {
+                (clickCount < (sCount - 1)) ? clickCount++ : clickCount = 0;
+            } else if ($(this).hasClass('prev')) {
+                (clickCount > 0) ? clickCount-- : (clickCount = sCount - 1);
+            }
+            TweenMax.to(sWrapper, 0.4, {x: '-' + (sWidth * clickCount)})
+
+            //CONTENT ANIMATIONS
+            var fromProperties = {autoAlpha:0, x:'-50', y:'-10'};
+            var toProperties = {autoAlpha:0.8, x:'0', y:'0'};
+
+            TweenLite.fromTo(slide_image, 1, {autoAlpha:0, y:'40'}, {autoAlpha:1, y:'0'});
+            TweenLite.fromTo(slide_date, 0.4, fromProperties, toProperties);
+            TweenLite.fromTo(slide_title, 0.6, fromProperties, toProperties);
+            TweenLite.fromTo(slide_text, 0.8, fromProperties, toProperties);
+            TweenLite.fromTo(slide_more, 1, fromProperties, toProperties);
+        });
+    });
+})(jQuery);
+
+$('.overlay').addClass('overlay-blue');
+</script>
